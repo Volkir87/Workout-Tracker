@@ -24,8 +24,9 @@ apiRoutes.put('/api/workouts/:id', async function(req, res){
 
 apiRoutes.post('/api/workouts', async function(req, res){
     //create a new workout (no body) AQCHUALLY this route is not used anywhere in the code 
-    let workout = new Workout({exercises: []});
-    workout.save();
+    let workout = new db.Workout({exercises: []});
+    let result = await workout.save();
+    res.send(result);
 });
 
 apiRoutes.get('/api/workouts/range', async function(req, res){
